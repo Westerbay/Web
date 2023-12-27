@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TP3</title>
+		<meta charset="utf-8">
+	   <link rel="stylesheet" href="normalize.css"/>
+	   <style type="text/css">
+			* {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+
+			body { margin: 0; width: 100%; min-width: 330px; color: black; }
+			
+			header {
+				background-color: #4CAF50; /* Green */
+				display: table;
+				width: 100%;
+			}
+			
+			header > h1.menuitem {
+				margin: 0;
+				color: white;
+				text-align: left;
+			}
+			
+			header > .menuitem {
+				font-size: 14px;
+				font-weight: bold;
+				padding: 5px 10px;
+				display: table-cell;
+			}
+			header > nav.menuitem {
+				text-align: right;
+			}
+			header > nav > a {
+				color: white;
+				text-decoration: none;
+				padding: 5px 10px;
+				-webkit-transition-duration: 0.8s; /* Safari */
+			    transition-duration: 0.8s;
+			}
+			header > nav > a:nth-child(1):hover { /* accueil */
+				background-color: black;
+			}
+			header > nav > a:nth-child(2):hover { /* vert */
+				background-color: #4CAF50;
+			}
+			header > nav > a:nth-child(3):hover { /* rouge */
+				background-color: #F44336;
+			}
+			header > nav > a:nth-child(4):hover { /* bleu */
+				background-color: #008CBA;
+			}
+			header > nav > a:nth-child(5):hover { /* gris */
+				background-color: #e7e7e7;
+				color: black;
+			}
+			/* ---------------------------------------------- */
+			/* section */
+			
+			section {
+				text-align: center;
+				vertical-align: top;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			section > h2 {
+				color: #F44336;
+			}
+			
+			section > img {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				border: 2px solid #F44336;
+				height: 250px;
+				margin-top: 1em;
+			}
+			
+			section > div.transbut {
+				display: inline-block;
+				vertical-align: top;
+				background-color: #F44336;
+				text-align: center;
+				padding: 4px 6px;
+				color: white;
+				border-right: 1px solid white;
+				font-weight: bold;
+			}
+			
+			section > div.transbut:hover {
+				color: yellow;
+				cursor: pointer;
+			}
+			
+			/* -----------------------------------------------*/
+			/* Image Transformations */
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<header style="background-color:#F44336;">
+			<h1 class="menuitem">TP3</h1>
+			<nav class="menuitem">
+				<a href="index.html"><img src="images/home.png" alt="Accueil"/></a><a href="exo2.html">Exo2</a><a href="exo3.html" style="background-color:white; color:#F44336;">Exo3</a><a href="exo4.html">Exo4</a><a href="exo5.html">Exo5</a>
+			</nav>
+		</header>
+		<section>
+			<h2>Transformations</h2>
+			<div class="transbut">Translation</div><div class="transbut">Scaling</div><div class="transbut">Rotation</div><div class="transbut">Combinaison</div>
+			<img src="images/merg.jpg" alt="Mer grise"/>
+		</section>
+	</body>
+</html>

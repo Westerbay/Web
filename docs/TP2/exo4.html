@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TP3</title>
+		<meta charset="utf-8">
+	   <link rel="stylesheet" href="normalize.css"/>
+	   <style type="text/css">
+			* {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+
+			body { margin: 0; width: 100%; min-width: 330px; color: black; }
+			
+			header {
+				background-color: #008CBA; /* Blue */
+				display: table;
+				width: 100%;
+			}
+			
+			header > h1.menuitem {
+				margin: 0;
+				color: white;
+				text-align: left;
+			}
+			
+			header > .menuitem {
+				font-size: 14px;
+				font-weight: bold;
+				padding: 5px 10px;
+				display: table-cell;
+			}
+			header > nav.menuitem {
+				text-align: right;
+			}
+			header > nav > a {
+				color: white;
+				text-decoration: none;
+				padding: 5px 10px;
+				-webkit-transition-duration: 0.8s; /* Safari */
+			    transition-duration: 0.8s;
+			}
+			header > nav > a:nth-child(1):hover { /* accueil */
+				background-color: black;
+			}
+			header > nav > a:nth-child(2):hover { /* vert */
+				background-color: #4CAF50;
+			}
+			header > nav > a:nth-child(3):hover { /* rouge */
+				background-color: #F44336;
+			}
+			header > nav > a:nth-child(4):hover { /* bleu */
+				background-color: #008CBA;
+			}
+			header > nav > a:nth-child(5):hover { /* gris */
+				background-color: #e7e7e7;
+				color: black;
+			}
+			/* ---------------------------------------------- */
+			/* section */
+			
+			section {
+				text-align: center;
+				vertical-align: top;
+				margin-left: auto;
+				margin-right: auto;
+				position: relative;
+			}
+			
+			section > h2 {
+				color: #008CBA;
+			}
+			
+			section > img {
+				display: block;
+				position: relative;
+				top: 54px;
+				margin-left: auto;
+				margin-right: auto;
+				border: 2px solid #008CBA;
+				height: 250px;
+				margin-top: 1em;
+			}
+			
+			/* -----------------------------------------------*/
+			/* A compléter ne pas modifier le code ci-dessus ni le HTML */
+			
+			
+				
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1 class="menuitem">TP3</h1>
+			<nav class="menuitem">
+				<a href="index.html"><img src="images/home.png" alt="Accueil"/></a><a href="exo2.html">Exo2</a><a href="exo3.html">Exo3</a><a href="exo4.html" style="background-color:white; color:#008CBA;">Exo4</a><a href="exo5.html">Exo5</a>
+			</nav>
+		</header>
+		<section>
+			<h2>Transformations & Map</h2>
+			<map>
+					
+			</map>
+			<img src="images/joconde.jpg" alt="La Joconde" usemap="#map"/>
+			<div><img src="images/mni.png" alt="My Name Is"/><div>La Joconde</div></div>
+		</section>
+	</body>
+</html>

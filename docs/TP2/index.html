@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>TD7</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="normalize.css" />
+	<style>
+		* {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			width: 100%;
+			min-width: 330px;
+		}
+
+		/* En-tête*/
+		header {
+			width: 100%;
+			text-align: center;
+		}
+
+		/* Menu de navigation */
+		#menu {
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+			display: table;
+			border-spacing: 2em;
+		}
+
+		header>nav>div {
+			display: table-row;
+		}
+
+		/* Tout bouton du menu */
+		header>nav>div>a.button {
+			/* Green */
+			color: white;
+			padding: 16px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: table-cell;
+			border-style: solid;
+			border-width: 1px;
+			/* Green */
+			font-size: 1.2em;
+			/* ------------------------------------------------------- */
+			/* Question A: transition  et pointeur */
+			border-radius: 7px;
+		}
+
+		/* Question A : Transition */
+		a.button:hover {
+			cursor: default;
+			background-color: white;
+			transition: 1s;
+		}
+
+		header>nav>div>a.button:hover {
+			padding: 16px 24px;
+			text-align: left;
+		}
+
+		.butGreen {
+			box-shadow: 0 4px 5px 3px #4caf4f82;
+			border-color: #4CAF50;
+			background-color: #4CAF50;
+			color: #4CAF50;
+		}
+
+		.butGreen:hover {
+			color: #4CAF50;
+		}
+
+
+		.butRed {
+			border-color: #F44336;
+			background-color: #F44336;
+			box-shadow: 0 4px 5px 3px #f4433681;
+		}
+
+		.butRed:hover {
+			color: #F44336;
+		}
+
+		.butBlue {
+			border-color: #008CBA;
+			background-color: #008CBA;
+			box-shadow: 0 4px 5px 3px #008bba6b;
+		}
+
+		.butBlue:hover {
+			color: #008CBA;
+		}
+
+		header>nav>div>a.butGray:hover {
+			background-color: black;
+			color: white;
+			border-color: black;
+		}
+
+		header>nav>div>a.butGray {
+			border-color: #e0e0e0;
+			background-color: #e7e7e7;
+			color: black;
+			box-shadow: 0 4px 5px 3px #8381817c;
+		}
+
+		span::after {
+			content: "»";
+			padding-left: 3px;
+			position: absolute;
+			opacity: 0%;
+		}
+
+		a:hover span::after {
+			opacity: 100%;
+			transition: 1s;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>HTML-CSS TP3</h1>
+		<nav id="menu">
+			<div>
+				<a href="exo2.html" class="button butGreen">Exo 2<span></span></a>
+				<a href="exo3.html" class="button butRed">Exo 3<span></span></a>
+			</div>
+			<div>
+				<a href="exo4.html" class="button butBlue">Exo 4<span></span></a>
+				<a href="exo5.html" class="button butGray">Exo 5<span></span></a>
+			</div>
+		</nav>
+	</header>
+</body>
+
+</html>
