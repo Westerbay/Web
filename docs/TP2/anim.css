@@ -1,0 +1,134 @@
+img {
+    width: 20vw;
+}
+
+aside {
+    height: 300px;
+}
+
+#revert {
+    transform: scaleX(-1);
+}
+
+figure {
+    position: relative;
+    pointer-events: none;
+    height: 0;
+}
+
+#dog figure {
+    top: -15em;
+    left: -10em;
+}
+
+#cat figure {
+    top: -15em;
+    left: 3em;
+}
+
+figcaption {
+    position: relative;
+    font-size: 2vw;
+    font-weight: bold;
+    transform: translateX(2em) translateY(-6em);
+}
+
+article {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+
+h2 {
+    grid-column: 1/-1;
+    margin: 2em;
+    text-align: center;
+    font-size: 3em;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(0px);
+    }
+
+    20% {
+        transform: translateX(200px);
+    }
+
+    45% {
+        transform: translateX(200px);
+    }
+
+    80% {
+        transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+#dog {
+    transform: translateX(3em) translateY(3em);
+}
+
+@keyframes speak {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    45% {
+        opacity: 100;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes turn {
+    0% {
+        transform: scaleX(-1);
+    }
+
+    20% {
+        transform: scaleX(-1);
+    }
+
+    45% {
+        transform: scaleX(1);
+    }
+
+    80% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(-1);
+    }
+}
+
+#cat {
+    animation-name: move;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+#cat>img {
+    animation-name: turn;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+figure {
+    animation-name: speak;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}

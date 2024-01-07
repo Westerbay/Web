@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exo 3</title>
+    <meta charset="utf-8" />
+    <script src="tools.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+        }
+
+        #canvas1 {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Exo 3</h1>
+    <canvas id='canvas1' width='400' height='400'></canvas>
+
+    <script>
+        var canvas = document.getElementById('canvas1');
+        var contexte = canvas.getContext('2d');
+        var rayonRobot = 10; // rayon en pixels
+        var couleurRobot = 'blue';
+
+        function dessinRobot(centre, couleur) {
+            contexte.fillStyle = couleur;
+            contexte.beginPath();
+            contexte.arc(centre.x, centre.y, rayonRobot, 0, 2 * Math.PI);
+            contexte.fill();
+        }
+
+        function positionRobotAlea() {
+            this.x = randomInteger(5, 395);
+            this.y = randomInteger(5, 395);
+            return this;
+        }
+
+        // partie principale
+        window.addEventListener("load", function (event) {
+
+            var centreRobot = positionRobotAlea();
+            dessinRobot(centreRobot, couleurRobot);
+
+        });
+
+    </script>
+</body>
+
+</html>

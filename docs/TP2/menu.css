@@ -1,0 +1,71 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    min-width: 330px;
+    color: black;
+}
+
+header {
+    background-color: black;
+    /* Green */
+    display: table;
+    width: 100%;
+}
+
+header>h1.menuitem {
+    margin: 0;
+    color: white;
+    text-align: left;
+}
+
+header>.menuitem {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    display: table-cell;
+}
+
+header>nav.menuitem {
+    text-align: right;
+}
+
+header>nav>a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    -webkit-transition-duration: 0.8s;
+    /* Safari */
+    transition-duration: 0.8s;
+}
+
+header>nav>a:nth-child(1):hover {
+    /* accueil */
+    background-color: black;
+}
+
+header>nav>a:nth-child(2):hover {
+    /* vert */
+    background-color: #4CAF50;
+}
+
+header>nav>a:nth-child(3):hover {
+    /* rouge */
+    background-color: #F44336;
+}
+
+header>nav>a:nth-child(4):hover {
+    /* bleu */
+    background-color: #008CBA;
+}
+
+header>nav>a:nth-child(5):hover {
+    /* gris */
+    background-color: #e7e7e7;
+    color: black;
+}

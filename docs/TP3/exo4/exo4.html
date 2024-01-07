@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exo 4</title>
+    <meta charset="utf-8" />
+    <script src="tools.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+        }
+
+        #canvas1 {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Exo 4</h1>
+    <canvas id='canvas1' width='400' height='400'></canvas>
+
+    <script>
+        var canvas = document.getElementById('canvas1');
+        var contexte = canvas.getContext('2d');
+        var rayonRobot = 10; // rayon en pixels
+        var couleurRobot = 'blue';
+
+        function dessinRobot(centre, couleur) {
+            contexte.fillStyle = couleur;
+            contexte.beginPath();
+            contexte.arc(centre.x, centre.y, rayonRobot, 0, 2 * Math.PI);
+            contexte.fill();
+        }
+
+        function positionRobotAlea() {
+            this.x = randomInteger(5, 395);
+            this.y = randomInteger(5, 395);
+            return this;
+        }
+
+        // partie principale
+        window.addEventListener("load", function (event) {
+
+            var centreRobot = positionRobotAlea();
+            dessinRobot(centreRobot, couleurRobot);
+
+            function deplacementRobotAlea(centreRobot) {
+                var x = centreRobot.x;
+                var y = centreRobot.y;
+                switch (randomInteger(1, 4)) {
+                    case 1:
+                        centreRobot.x += 1;
+                        break;
+                    case 2:
+                        centreRobot.x -= 1;
+                        break;
+                    case 3:
+                        centreRobot.y += 1;
+                        break;
+                    case 4:
+                        centreRobot.y -= 1;
+                        break;
+                }
+                if (centreRobot.x < 5 || centreRobot.x > 395) {
+                    centreRobot.x = x;
+                }
+                else if (centreRobot.y < 5 || centreRobot.y > 395) {
+                    centreRobot.y = y;
+                }
+                return centreRobot;
+
+            }
+
+            function anim() {
+                contexte.clearRect(0, 0, canvas.width, canvas.height);
+                centreRobot = deplacementRobotAlea(centreRobot);
+                dessinRobot(centreRobot, couleurRobot);
+            }
+
+            var animDelai = 10;
+            var animID = setInterval(anim, animDelai);
+
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exo 5</title>
+    <meta charset="utf-8" />
+    <script src="tools.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+        }
+
+        #canvas1 {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Exo 5</h1>
+    <canvas id='canvas1' width='400' height='400'></canvas>
+    <input type="button" value="Anim" onclick="a()">
+    <script>
+        var canvas = document.getElementById('canvas1');
+        var contexte = canvas.getContext('2d');
+        var rayonRobot = 10; // rayon en pixels
+        var couleurRobot = 'blue';
+        var x = 0;
+        var y = 0;
+        var interval = null;
+
+        function dessinRobot(centre, couleur) {
+            contexte.fillStyle = couleur;
+            contexte.beginPath();
+            contexte.arc(centre.x, centre.y, rayonRobot, 0, 2 * Math.PI);
+            contexte.fill();
+        }
+
+        function positionRobotAlea() {
+            this.x = randomInteger(5, 395);
+            this.y = randomInteger(5, 395);
+            return this;
+        }
+
+        function Robot(x, y) {
+            this.x = x;
+            this.y = y;
+            return this;
+        }
+
+        // partie principale
+        window.addEventListener("load", function (event) {
+
+            var centreRobot = positionRobotAlea();
+            x = centreRobot.x;
+            y = centreRobot.y;
+            dessinRobot(centreRobot, couleurRobot);
+
+        });
+        function deplacementRobotAlea() {
+            var a = x;
+            var b = y;
+            switch (randomInteger(1, 4)) {
+                case 1:
+                    x += 1;
+                    break;
+                case 2:
+                    x -= 1;
+                    break;
+                case 3:
+                    y += 1;
+                    break;
+                case 4:
+                    y -= 1;
+                    break;
+            }
+            if (x < 5 || x > 395) {
+                x = a;
+            }
+            else if (y < 5 || y > 395) {
+                y = b;
+            }
+
+        }
+
+        function anim() {
+            contexte.clearRect(0, 0, canvas.width, canvas.height);
+            deplacementRobotAlea();
+            var centreRobot = Robot(x, y);
+            dessinRobot(centreRobot, couleurRobot);
+        }
+
+        function a() {
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+            }
+            else {
+                interval = setInterval(anim, 100);
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
