@@ -38,15 +38,23 @@
 	<div id="stop_clic">Start/Stop</div>
 	<script>
 		var ctx = document.getElementById('canvaimage').getContext("2d");
-		var sprite = CanvasSprite(
+		var chat = new CanvasSprite(
 			"images/chat.png",
 			0,
 			0,
-			50,
-			300,
-			5,
-			5,
+			512,
+			256,
+			2,
+			4,
 			ctx
+		);
+		chat.addAnimation("run", [0, 1, 2, 3, 4, 5]);
+		chat.selectAnimation("run", true);
+
+		var button = document.getElementById("stop_clic");
+		button.addEventListener(
+			"click",
+			function () { chat.simpleAnim(100) },
 		);
 	</script>
 </body>

@@ -52,36 +52,55 @@ CanvasSprite.prototype.addAnimation = function (nameAnim, tiles) {
 // -----------------------------------------------------------------------------------
 // Sélectionne une animation spécifique nameAnim
 CanvasSprite.prototype.selectAnimation = function (nameAnim, loop) {
-
+    this.currentAnimation = this.animations[nameAnim];
+    this.currentTile = 0;
+    this.loop = loop;
 }
 // -----------------------------------------------------------------------------------
 // Sélectionne la tile suivante et la dessine, si la tile existe (mode sans boucle)
 // retourne false si la tile courrante est la dernière (mode sans boucle), true sinon
 CanvasSprite.prototype.nextTile = function () {
-
+    this.currentTile = (this.currentTile + 1) % this.currentAnimation.length;
+    var tileIndex = this.currentAnimation[this.currentTile];
+    drawCanvasImage(
+        this.image,
+        -this.tileX(tileIndex) * this.widthTile,
+        -this.tileY(tileIndex) * this.heightTile
+    );
+    // L'implémentation permet toujours une tile suivante
+    return true;
 }
 // -----------------------------------------------------------------------------------
 // Retourne la position de la tile dans le sprite selon x
 CanvasSprite.prototype.tileX = function (tileIndex) {
-
+    return tileIndex % this.nbXTiles;
 }
 // -----------------------------------------------------------------------------------
 // Retourne la position de la tile dans le sprite selon y
 CanvasSprite.prototype.tileY = function (tileIndex) {
-
+    return Math.floor(tileIndex / this.nbXTiles);
 }
 // -----------------------------------------------------------------------------------
 // Dessine une tile
 CanvasSprite.prototype.drawTile = function (tileIndex) {
-
+    var canvas = document.getElementById("canvaimage");
+    this.image.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    this.nextTile();
 };
 // ----------------------------------------------------------------------------------
 // Dessine une tile
 CanvasSprite.prototype.simpleAnim = function (tps) {
-
+    if (this.timeID == -1) {
+        var t = this;
+        this.loop = true;
+        this.timeID = setInterval(function () { t.drawTile(); }, tps);
+    } else {
+        this.stopAnim();
+    }
 }
 // ----------------------------------------------------------------------------------
 CanvasSprite.prototype.stopAnim = function () {
-
+    clearInterval(this.timeID);
+    this.timeID = -1;
 }
 // ----------------------------------------------------------------------------------
