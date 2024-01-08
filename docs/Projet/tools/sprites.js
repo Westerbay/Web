@@ -7,7 +7,8 @@ function canvasImage(imgURL, posX, posY, ctx) {
     var image = new Image();
     image.src = imgURL;
     image.alt = "CanvasImage";
-    image.ctx = ctx;
+    image.canvas = ctx;
+    image.ctx = ctx.getContext("2d");
 
     image.addEventListener("load",
         function () { drawCanvasImage(image, posX, posY) },
@@ -36,9 +37,13 @@ function CanvasSprite(spriteImgURL, x, y, widthTile, heightTile, nbXTiles, nbYTi
     this.nbXTiles = nbXTiles;
     this.nbYTiles = nbYTiles;
 
+    ctx.width = widthTile;
+    ctx.height = heightTile;
+
     this.animations = {};
-    this.currentAnimation = [];
     this.currentTile = 0;
+    this.currentIndex = 0;
+    this.animation = "";
     this.loop = false;
     this.timeID = -1;
 }
@@ -51,33 +56,32 @@ CanvasSprite.prototype.addAnimation = function (nameAnim, tiles) {
 }
 // -----------------------------------------------------------------------------------
 // Sélectionne une animation spécifique nameAnim
-CanvasSprite.prototype.selectAnimation = function (nameAnim, loop) {
-    this.currentAnimation = this.animations[nameAnim];
+CanvasSprite.prototype.selectAnimation = function (Anim, loop) {
+    this.animation = Anim;
     this.currentTile = 0;
     this.loop = loop;
 }
+
 // -----------------------------------------------------------------------------------
 // Sélectionne la tile suivante et la dessine, si la tile existe (mode sans boucle)
 // retourne false si la tile courrante est la dernière (mode sans boucle), true sinon
 CanvasSprite.prototype.nextTile = function () {
+    var animation = this.animations[this.animation[this.currentIndex]];
+    var havenext = true;
     this.currentTile = this.currentTile + 1;
-    console.log(this.loop);
-    if (this.currentTile >= this.currentAnimation.length) {
-        if (this.loop) this.currentTile = 0;
-        else {
-            this.currentTile = this.currentAnimation.length - 1;
-            this.stopAnim();
-            return false;
-        }
+
+    if (this.currentTile == animation.length - 1) {
+        havenext = false;
     }
-    var tileIndex = this.currentAnimation[this.currentTile];
+
+    var tileIndex = animation[this.currentTile];
     drawCanvasImage(
         this.image,
         -this.tileX(tileIndex) * this.widthTile,
         -this.tileY(tileIndex) * this.heightTile
     );
     // L'implémentation permet toujours une tile suivante
-    return true;
+    return havenext;
 }
 // -----------------------------------------------------------------------------------
 // Retourne la position de la tile dans le sprite selon x
@@ -92,23 +96,29 @@ CanvasSprite.prototype.tileY = function (tileIndex) {
 // -----------------------------------------------------------------------------------
 // Dessine une tile
 CanvasSprite.prototype.drawTile = function (tileIndex) {
-    var canvas = document.getElementById("canvaimage");
-    this.image.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    this.nextTile();
+    this.image.ctx.clearRect(0, 0, 512, 256);
+    if (!this.nextTile()) {
+        this.currentTile = 0;
+        this.currentIndex += 1;
+        if (this.currentIndex >= this.animation.length) {
+            this.currentIndex = 0;
+            if (!this.loop) {
+                this.stopAnim();
+            }
+        }
+    }
 };
 // ----------------------------------------------------------------------------------
 // Dessine une tile
 CanvasSprite.prototype.simpleAnim = function (tps) {
     if (this.timeID == -1) {
         var t = this;
-        if (!this.loop && this.currentTile == this.currentAnimation.length - 1) {
-            this.currentTile = 0;
-        }
         this.timeID = setInterval(function () { t.drawTile(); }, tps);
     } else {
         this.stopAnim();
     }
 }
+
 // ----------------------------------------------------------------------------------
 CanvasSprite.prototype.stopAnim = function () {
     clearInterval(this.timeID);
