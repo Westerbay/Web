@@ -60,7 +60,16 @@ CanvasSprite.prototype.selectAnimation = function (nameAnim, loop) {
 // Sélectionne la tile suivante et la dessine, si la tile existe (mode sans boucle)
 // retourne false si la tile courrante est la dernière (mode sans boucle), true sinon
 CanvasSprite.prototype.nextTile = function () {
-    this.currentTile = (this.currentTile + 1) % this.currentAnimation.length;
+    this.currentTile = this.currentTile + 1;
+    console.log(this.loop);
+    if (this.currentTile >= this.currentAnimation.length) {
+        if (this.loop) this.currentTile = 0;
+        else {
+            this.currentTile = this.currentAnimation.length - 1;
+            this.stopAnim();
+            return false;
+        }
+    }
     var tileIndex = this.currentAnimation[this.currentTile];
     drawCanvasImage(
         this.image,
@@ -92,7 +101,9 @@ CanvasSprite.prototype.drawTile = function (tileIndex) {
 CanvasSprite.prototype.simpleAnim = function (tps) {
     if (this.timeID == -1) {
         var t = this;
-        this.loop = true;
+        if (!this.loop && this.currentTile == this.currentAnimation.length - 1) {
+            this.currentTile = 0;
+        }
         this.timeID = setInterval(function () { t.drawTile(); }, tps);
     } else {
         this.stopAnim();
