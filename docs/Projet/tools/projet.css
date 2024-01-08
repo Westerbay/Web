@@ -1,0 +1,140 @@
+canvas {
+    width: 20%;
+    height: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    position: absolute;
+    bottom: 3%;
+}
+
+#stop_clic {
+    position: absolute;
+    color: white;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    background-color: rgb(236, 78, 78);
+    border: solid 5px black;
+    padding: 1em;
+    font-size: 2em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    transition: 3s;
+}
+
+#stop_clic:hover {
+    cursor: pointer;
+}
+
+#option {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    border: solid 5px black;
+    padding: 5px;
+    font-size: 1em;
+    color: white;
+    background-color: rgb(30, 30, 30);
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-weight: bold;
+    transition: ease-in 1s;
+}
+
+#loop {
+    margin-right: 20px;
+}
+
+.center {
+    width: 450px;
+    margin: auto;
+}
+
+#speed {
+    width: 300px;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+aside {
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/winter/winter.jpg");
+    background-size: cover;
+    background-position: bottom left;
+}
+
+#red {
+    animation-duration: 12.8s;
+    animation-name: redc;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#red {
+    left: -20%;
+}
+
+#yellow {
+    right: -20%;
+}
+
+#yellow {
+    animation-duration: 12.8s;
+    animation-name: yellowc;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes redc {
+    0% {
+        left: -20%;
+    }
+
+    20% {
+        left: 5%;
+    }
+
+    28% {
+        left: 33%;
+    }
+
+    66% {
+        left: 33%;
+    }
+
+    100% {
+        left: 120%;
+    }
+}
+
+@keyframes yellowc {
+    0% {
+        right: -20%;
+    }
+
+    20% {
+        right: 5%;
+    }
+
+    28% {
+        right: 33%;
+    }
+
+    66% {
+        right: 33%;
+    }
+
+    100% {
+        right: 120%;
+    }
+}

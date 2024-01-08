@@ -39,6 +39,7 @@ function CanvasSprite(spriteImgURL, x, y, widthTile, heightTile, nbXTiles, nbYTi
 
     ctx.width = widthTile;
     ctx.height = heightTile;
+    this.ctx = ctx;
 
     this.animations = {};
     this.currentTile = 0;
@@ -96,7 +97,7 @@ CanvasSprite.prototype.tileY = function (tileIndex) {
 // -----------------------------------------------------------------------------------
 // Dessine une tile
 CanvasSprite.prototype.drawTile = function (tileIndex) {
-    this.image.ctx.clearRect(0, 0, 512, 256);
+    this.image.ctx.clearRect(0, 0, this.ctx.width, this.ctx.height);
     if (!this.nextTile()) {
         this.currentTile = 0;
         this.currentIndex += 1;

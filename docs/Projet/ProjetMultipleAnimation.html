@@ -1,64 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<title>Projet Conception Site Web - 1A Info</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<link rel="stylesheet" href="tools/normalize.css" />
-	<style type="text/css">
-		* {
-			text-align: center;
-		}
-
-		#canvanim {
-			width: 512px;
-			height: 256px;
-			border-width: 2px;
-			border-style: solid;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		#stop_clic:hover {
-			font-variant: small-caps;
-			cursor: pointer;
-		}
-	</style>
-	<script type="text/javascript" src="tools/sprites.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="tools/normalize.css">
+	<link rel="stylesheet" href="tools/projet.css">
+	<script src="tools/sprites.js"></script>
+	<script src="tools/dino.js"></script>
 </head>
 
-<body>
-	<div class="canva">
-		<canvas id="canvanim" width="512" height="256">
-			Ne supporte pas canvas.
-		</canvas>
-	</div>
+<body onload="main();">
+	<aside>
+		<canvas id="red"></canvas>
+		<canvas id="yellow"></canvas>
+	</aside>
 	<div id="stop_clic">Start/Stop</div>
+	<div id="option">
+		<div class="center">
+			<label>Loop: </label>
+			<input type="checkbox" id="loop" name="loop">
+			<label>Speed: </label>
+			<input type="range" id="speed" name="volume" min="10" max="1000">
+		</div>
+	</div>
 </body>
-<script>
-	var ctx = document.getElementById('canvanim');
-	var chat = new CanvasSprite(
-		"images/sheeppoe.png",
-		0,
-		0,
-		40,
-		40,
-		16,
-		8,
-		ctx
-	);
-	chat.addAnimation("run", [3, 4, 5, 6]);
-	chat.addAnimation("roll", [112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126]);
-	chat.addAnimation("yawn", [107, 107, 107, 108, 108, 108, 109, 110, 111]);
-	chat.selectAnimation(["run", "roll", "run", "yawn"], true);
-
-	var button = document.getElementById("stop_clic");
-	button.addEventListener(
-		"click",
-		function () { chat.simpleAnim(100) },
-	);
-
-</script>
 
 </html>
