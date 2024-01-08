@@ -109,11 +109,11 @@ aside {
     }
 
     28% {
-        left: 33%;
+        left: calc(50% - 17vh);
     }
 
     66% {
-        left: 33%;
+        left: calc(50% - 17vh);
     }
 
     100% {
@@ -131,11 +131,12 @@ aside {
     }
 
     28% {
-        right: 33%;
+        right: calc(50% - 17vh);
+        ;
     }
 
     66% {
-        right: 33%;
+        right: calc(50% - 17vh);
     }
 
     100% {
