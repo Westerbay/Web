@@ -5,7 +5,14 @@
 // ctx : contexte graphique
 function canvasImage(imgURL,posX,posY,ctx)
 {
-	
+	var image = new Image();
+    image.src = imgURL;
+    image.alt = "CanvasImage";
+    image.style.position = "relative";
+    image.style.left = posX;
+    image.style.bottom = posY;
+    image.ctx = ctx;
+    return image;
 }
 // -----------------------------------------------------------------------------------
 // Dessine l'image sur le canvas
@@ -13,7 +20,7 @@ function canvasImage(imgURL,posX,posY,ctx)
 // (posX,posY) : position du coin supérieur gauche de l'image dans le canvas
 function drawCanvasImage(image,posX,posY)
 {
-
+    image.ctx
 }
 // ===================================================================================
 // Constructeur for an animation object
@@ -25,7 +32,17 @@ function drawCanvasImage(image,posX,posY)
 // loop : animation en boucle (true) ou non (false)
 function CanvasSprite(spriteImgURL, x, y, widthTile, heightTile, nbXTiles, nbYTiles,ctx)
 {
-   
+   this.image = canvasImage(spriteImgURL, x, y, ctx);
+   this.widthTile = widthTile;
+   this.heightTile = heightTile;
+   this.nbXTiles = nbXTiles;
+   this.nbYTiles = nbYTiles;
+
+   this.animations = {};
+   this.currentAnimation = [];
+   this.currentTile = 0;
+   this.loop = false;
+   this.timeID = -1;
 }
 // -----------------------------------------------------------------------------------
 // Ajout d'une animation spécifique
@@ -33,7 +50,7 @@ function CanvasSprite(spriteImgURL, x, y, widthTile, heightTile, nbXTiles, nbYTi
 // tiles : tableau d'indices de tile
 CanvasSprite.prototype.addAnimation = function(nameAnim, tiles)
 {
-    
+    this.animations[nameAnim] = tiles;
 }
 // -----------------------------------------------------------------------------------
 // Sélectionne une animation spécifique nameAnim
