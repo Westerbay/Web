@@ -6,6 +6,7 @@ canvas {
     display: inline-block;
     position: absolute;
     bottom: 3%;
+    pointer-events: none;
 }
 
 #stop_clic {
@@ -78,23 +79,23 @@ aside {
     background-position: bottom left;
 }
 
-#red {
-    animation-duration: 12.8s;
+#red.animate {
+    animation-duration: 13.7s;
     animation-name: redc;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
 
 #red {
-    left: -20vh;
+    left: -150px;
 }
 
 #yellow {
-    right: -20vh;
+    right: -150px;
 }
 
-#yellow {
-    animation-duration: 12.8s;
+#yellow.animate {
+    animation-duration: 13.7s;
     animation-name: yellowc;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -102,7 +103,7 @@ aside {
 
 @keyframes redc {
     0% {
-        left: -20vh;
+        left: -150px;
     }
 
     20% {
@@ -124,7 +125,7 @@ aside {
 
 @keyframes yellowc {
     0% {
-        right: -20vh;
+        right: -150px;
     }
 
     20% {

@@ -47,6 +47,7 @@ function CanvasSprite(spriteImgURL, x, y, widthTile, heightTile, nbXTiles, nbYTi
     this.animation = "";
     this.loop = false;
     this.timeID = -1;
+    this.end = false;
 }
 // -----------------------------------------------------------------------------------
 // Ajout d'une animation spécifique
@@ -69,11 +70,6 @@ CanvasSprite.prototype.selectAnimation = function (Anim, loop) {
 CanvasSprite.prototype.nextTile = function () {
     var animation = this.animations[this.animation[this.currentIndex]];
     var havenext = true;
-    this.currentTile = this.currentTile + 1;
-
-    if (this.currentTile == animation.length - 1) {
-        havenext = false;
-    }
 
     var tileIndex = animation[this.currentTile];
     drawCanvasImage(
@@ -81,6 +77,12 @@ CanvasSprite.prototype.nextTile = function () {
         -this.tileX(tileIndex) * this.widthTile,
         -this.tileY(tileIndex) * this.heightTile
     );
+
+    this.currentTile = this.currentTile + 1;
+    if (this.currentTile == animation.length) {
+        havenext = false;
+    }
+
     // L'implémentation permet toujours une tile suivante
     return havenext;
 }
@@ -105,6 +107,7 @@ CanvasSprite.prototype.drawTile = function (tileIndex) {
             this.currentIndex = 0;
             if (!this.loop) {
                 this.stopAnim();
+                this.end = true;
             }
         }
     }
@@ -122,7 +125,9 @@ CanvasSprite.prototype.simpleAnim = function (tps) {
 
 // ----------------------------------------------------------------------------------
 CanvasSprite.prototype.stopAnim = function () {
-    clearInterval(this.timeID);
-    this.timeID = -1;
+    if (this.timeID != -1) {
+        clearInterval(this.timeID);
+        this.timeID = -1;
+    }
 }
 // ----------------------------------------------------------------------------------
